@@ -1,6 +1,7 @@
 package com.xt8.service.impl;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,4 +33,12 @@ public class ExpressServiceImpl extends BasicServiceImpl implements ExpressServi
 		condition.put("ExpressId", expeId);
 		return find(ExpressSite.class,condition );
 	}
+
+	@Override
+	public List<Express> listExpress() {
+		// TODO Auto-generated method stub
+		return find(Express.class,null );
+	}
+
+	
 }

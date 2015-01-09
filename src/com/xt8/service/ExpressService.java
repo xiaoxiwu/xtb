@@ -17,6 +17,10 @@ public interface ExpressService extends BasicService {
 	 * @return
 	 */
 	public List<ExpressSite> listExpressSiteById(int expeId);
-	
+	/**
+	 * 取快递公司列表
+	 * @return
+	 */
+	public List<Express> listExpress();
 	
 }

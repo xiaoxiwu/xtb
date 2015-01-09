@@ -149,7 +149,10 @@
 	<bean id="remarkFriendNameService" class="com.xt8.service.impl.RemarkFriendNameServiceImpl"></bean>
 	<bean id="verifyFriendService" class="com.xt8.service.impl.VerifyFriendServiceImpl"></bean>
 	<bean id="friendsService" class="com.xt8.service.impl.FriendsServiceImpl"></bean>
-
+	<bean id="deliverService" class="com.xt8.service.impl.DeliverServiceImpl"></bean>
+	<bean id="expressSiteService" class="com.xt8.service.impl.ExpressSiteServiceImpl"></bean>
+	<bean id="expressOrderService" class="com.xt8.service.impl.ExpressOrderServiceImpl"></bean>
+	<bean id="expressService" class="com.xt8.service.impl.ExpressServiceImpl"></bean>
 	<!-- Struts Action配置 -->
 	<bean id="UserAction" class="com.xt8.action.UserAction" scope="prototype" />
 	<!-- <bean id="UserAction" class="com.xt8.action.UserAction" scope="prototype" 

@@ -1,18 +1,18 @@
 package com.xt8.service.impl;
 
 import java.io.Serializable;
-import java.util.Collection;
-
 import com.xt8.model.Deliver;
 import com.xt8.model.ExpressOrder;
 import com.xt8.model.ExpressSite;
+import com.xt8.service.DeliverService;
 import com.xt8.service.ExpressOrderService;
+import com.xt8.service.ExpressSiteService;
 
 public class ExpressOrderServiceImpl extends BasicServiceImpl implements ExpressOrderService {
 
-	private DeliverServiceImpl deliverServiceImpl;
-	private ExpressSiteServiceImpl expressSiteServiceImpl;
-	public ExpressSiteServiceImpl getExpressSiteServiceImpl() {
+	private DeliverService deliverServiceImpl;
+	private ExpressSiteService expressSiteServiceImpl;
+	public ExpressSiteService getExpressSiteServiceImpl() {
 		return expressSiteServiceImpl;
 	}
 
@@ -21,7 +21,7 @@ public class ExpressOrderServiceImpl extends BasicServiceImpl implements Express
 		this.expressSiteServiceImpl = expressSiteServiceImpl;
 	}
 
-	public DeliverServiceImpl getDeliverServiceImpl() {
+	public DeliverService getDeliverServiceImpl() {
 		return deliverServiceImpl;
 	}
 
