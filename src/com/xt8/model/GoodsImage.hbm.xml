@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+	<class name="GoodsImage" table="tb_lk_goods_image">
+		<cache usage="read-write" />
+
+		<id name="id" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		
+
+		<many-to-one name="image" class="Image" column="imageId"></many-to-one>
+		<many-to-one name="goods" class="Goods" column="goodsId"></many-to-one>
+	</class>
+</hibernate-mapping>

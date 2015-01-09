@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+	<class name="Mood" table="tb_mood">
+
+		<cache usage="read-write" />
+		<id name="moodId" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="content" type="java.lang.String">
+			<column name="content" length="300" not-null="true" />
+		</property>
+		<property name="time" type="java.util.Date">
+			<column name="time" />
+		</property>
+		<property name="device" type="java.lang.String">
+			<column name="device" length="20" />
+		</property>
+		<property name="location" type="java.lang.String">
+			<column name="location" length="100" />
+		</property>
+		<property name="browseNum" type="java.lang.Integer">
+			<column name="browseNum" />
+		</property>
+		<property name="ifLookup" type="java.lang.Integer">
+			<column name="ifLookup" length="100" />
+		</property>
+		<property name="ifDel" type="java.lang.Integer">
+			<column name="ifDel" />
+		</property>
+		<property name="extraFlag" type="java.lang.Integer">
+			<column name="extraFlag" />
+		</property>
+		<property name="extraProperty1" type="java.lang.Integer">
+			<column name="extraProperty1" />
+		</property>
+		<property name="extraValue1" type="java.lang.Integer">
+			<column name="extraValue1" />
+		</property>
+		<property name="extraProperty2" type="java.lang.Integer">
+			<column name="extraProperty2" />
+		</property>
+		<property name="extraValue2" type="java.lang.Integer">
+			<column name="extraValue2" />
+		</property>
+		<many-to-one name="user" class="User" column="userId"></many-to-one>
+	</class>
+</hibernate-mapping>

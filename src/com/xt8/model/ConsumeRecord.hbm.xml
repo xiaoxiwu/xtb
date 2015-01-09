@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+	<class name="ConsumeRecord" table="tb_consume">
+		<cache usage="read-write" />
+
+		<id name="id" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="money" type="java.lang.Double">
+			<column name="money" />
+		</property>
+		<property name="result" type="java.lang.Integer">
+			<column name="result" />
+		</property>
+		<property name="time" type="java.util.Date">
+			<column name="time" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="description" length="64" />
+		</property>
+				<property name="resultDesc" type="java.lang.String">
+			<column name="resultDesc" length="64" />
+		</property>
+
+		<property name="ifDel" type="java.lang.Integer">
+			<column name="ifDel" />
+		</property>
+		<many-to-one name="user" class="User" column="userId"></many-to-one>
+	</class>
+</hibernate-mapping>

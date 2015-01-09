@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+	<class name="File" table="tb_file">
+		<cache usage="read-write" />
+
+		<id name="fileId" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="fileName" type="java.lang.String">
+			<column name="fileName" length="60" />
+		</property>
+		<property name="fileSize" type="java.lang.Integer">
+			<column name="fileSize" />
+		</property>
+		<property name="upTime" type="java.util.Date">
+			<column name="upTime" />
+		</property>
+		<property name="ftype" type="java.lang.String">
+			<column name="ftype" length="20" />
+		</property>
+		<property name="isCloud" type="java.lang.Integer">
+			<column name="isCloud" not-null="true" />
+		</property>
+		<property name="fpath" type="java.lang.String">
+			<column name="fpath" length="100" />
+		</property>
+		<property name="ifDel" type="java.lang.Integer">
+			<column name="ifDel" />
+		</property>
+		<many-to-one name="user" class="User" column="userId"></many-to-one>
+	</class>
+</hibernate-mapping>

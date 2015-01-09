@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!-- 启用注解方式 -->
+	<context:annotation-config />
+
+	<!-- service日志 -->
+	<bean id="loggerInjector" class="com.xt8.util.LoggerInjector"></bean>
+
+    <bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean>
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${jdbc.driver}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.password}" />
+
+		<!-- 优化数据库连接 -->
+		<property name="initialPoolSize" value="${hibernate.c3p0.initialPoolSize}" />
+		<property name="minPoolSize" value="${hibernate.c3p0.minPoolSize}" />
+		<property name="maxPoolSize" value="${hibernate.c3p0.maxPoolSize}" />
+		<property name="acquireRetryAttempts" value="${hibernate.c3p0.acquireRetryAttempts}" />
+		<property name="acquireIncrement" value="${hibernate.c3p0.acquireIncrement}" />
+		<property name="idleConnectionTestPeriod" value="${hibernate.c3p0.idleConnectionTestPeriod}" />
+		<property name="maxIdleTime" value="${hibernate.c3p0.maxIdleTime}" />
+		<property name="maxConnectionAge" value="${hibernate.c3p0.maxConnectionAge}" />
+		<property name="preferredTestQuery" value="${hibernate.c3p0.preferredTestQuery}" />
+		<property name="testConnectionOnCheckin" value="${hibernate.c3p0.testConnectionOnCheckin}" />
+	</bean>
+	<!-- 配置会话工厂 -->
+	<bean id="sessionFactory"  class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- 设置数据源 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 接管Hibernate对象映射文件 -->
+		<property name="mappingResources">
+			<list>
+				<value>com/xt8/model/User.hbm.xml</value>
+				<value>com/xt8/model/Mood.hbm.xml</value>
+				<value>com/xt8/model/File.hbm.xml</value>
+				<value>com/xt8/model/Image.hbm.xml</value>
+				<value>com/xt8/model/Friends.hbm.xml</value>
+				<value>com/xt8/model/Admin.hbm.xml</value>
+				<value>com/xt8/model/AppVersion.hbm.xml</value>
+				<value>com/xt8/model/Category.hbm.xml</value>
+				<value>com/xt8/model/City.hbm.xml</value>
+				<value>com/xt8/model/Province.hbm.xml</value>
+				<value>com/xt8/model/District.hbm.xml</value>
+				<value>com/xt8/model/ConsumeRecord.hbm.xml</value>
+				<value>com/xt8/model/DeliveryLog.hbm.xml</value>
+				<value>com/xt8/model/Deliver.hbm.xml</value>
+				<value>com/xt8/model/EvaluateIndex.hbm.xml</value>
+			   <value>com/xt8/model/ExpressCorp.hbm.xml</value>
+			   <value>com/xt8/model/Express.hbm.xml</value>
+				<value>com/xt8/model/ExpressSite.hbm.xml</value>
+				<value>com/xt8/model/ExpressOrder.hbm.xml</value> 
+				<value>com/xt8/model/FAQ.hbm.xml</value>
+				<value>com/xt8/model/Goods.hbm.xml</value>
+				<value>com/xt8/model/GoodsImage.hbm.xml</value>
+				<value>com/xt8/model/GoodsUserLike.hbm.xml</value>
+				<value>com/xt8/model/GoodsUserWant.hbm.xml</value>
+				<value>com/xt8/model/LoginLog.hbm.xml</value>
+				<value>com/xt8/model/MoodImage.hbm.xml</value>
+				<value>com/xt8/model/MoodPraise.hbm.xml</value>
+				<value>com/xt8/model/MoodReply.hbm.xml</value>
+				<value>com/xt8/model/Order.hbm.xml</value>
+				<value>com/xt8/model/OrderRecvNotify.hbm.xml</value>
+				<value>com/xt8/model/OrderSendNotify.hbm.xml</value>
+				<value>com/xt8/model/PaymentType.hbm.xml</value>
+				<value>com/xt8/model/RechargeRecord.hbm.xml</value>
+				<value>com/xt8/model/RequestRefund.hbm.xml</value>
+				<value>com/xt8/model/Setting.hbm.xml</value>
+				<value>com/xt8/model/UserAdvice.hbm.xml</value>
+				<value>com/xt8/model/UserCommAddr.hbm.xml</value>
+				<value>com/xt8/model/UserDetail.hbm.xml</value>
+				<value>com/xt8/model/UserEvaluateIndex.hbm.xml</value>
+				<value>com/xt8/model/UserSetting.hbm.xml</value>
+				<value>com/xt8/model/VerifyFriend.hbm.xml</value>
+				<value>com/xt8/model/UserLimitedForWantGoods.hbm.xml</value>
+				<value>com/xt8/model/RemarkFriendName.hbm.xml</value>
+				<value>com/xt8/model/MoodAuthorization.hbm.xml</value>
+				<value>com/xt8/model/BlackList.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.MySQLDialect
+				hibernate.hbm2ddl.auto=update
+				hibernate.show_sql=false
+				hibernate.cache.use_second_level_cache=true
+				hibernate.cache.use_query_cache=false
+				hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
+			</value>
+		</property>
+	</bean>
+	<!-- hibernate template
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean> -->
+	<!-- 配置事务管理器，统一管理sessionFactory的事务 -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />	
+	</bean>
+
+	<!-- 启用事务注解 -->
+	<tx:annotation-driven transaction-manager="txManager" />
+
+	<!-- 服务 -->
+	<bean id="userService" class="com.xt8.service.impl.UserServiceImpl"></bean>
+	<bean id="userDetailService" class="com.xt8.service.impl.UserDetailServiceImpl"></bean>
+	<bean id="moodService" class="com.xt8.service.impl.MoodServiceImpl"></bean>
+	<bean id="moodReplyService" class="com.xt8.service.impl.MoodReplyServiceImpl"></bean>
+	<bean id="moodPraiseService" class="com.xt8.service.impl.MoodPraiseServiceImpl"></bean>
+	<bean id="fileService" class="com.xt8.service.impl.FileServiceImpl"></bean>
+	<bean id="imageService" class="com.xt8.service.impl.ImageServiceImpl"></bean>
+	<bean id="moodImageService" class="com.xt8.service.impl.MoodImageServiceImpl"></bean>
+	<bean id="categoryService" class="com.xt8.service.impl.CategoryServiceImpl"></bean>
+	<bean id="provinceService" class="com.xt8.service.impl.ProvinceServiceImpl"></bean>
+	<bean id="cityService" class="com.xt8.service.impl.CityServiceImpl"></bean>
+	<bean id="districtService" class="com.xt8.service.impl.DistrictServiceImpl"></bean>
+	<bean id="goodsService" class="com.xt8.service.impl.GoodsServiceImpl"></bean>
+	<bean id="settingService" class="com.xt8.service.impl.SettingServiceImpl"></bean>
+	<bean id="userSettingService" class="com.xt8.service.impl.UserSettingServiceImpl"></bean>
+	<bean id="orderService" class="com.xt8.service.impl.OrderServiceImpl"></bean>
+	<bean id="orderRecvNotifyService" class="com.xt8.service.impl.OrderRecvNotifyServiceImpl"></bean>
+	<bean id="orderSendNotifyService" class="com.xt8.service.impl.OrderSendNotifyServiceImpl"></bean>
+	<bean id="evaluateIndexService" class="com.xt8.service.impl.EvaluateIndexServiceImpl"></bean>
+	<bean id="userEvaluateIndexService" class="com.xt8.service.impl.UserEvaluateIndexServiceImpl"></bean>
+	<bean id="goodsUserLikeService" class="com.xt8.service.impl.GoodsUserLikeServiceImpl"></bean>
+	<bean id="goodsUserWantService" class="com.xt8.service.impl.GoodsUserWantServiceImpl"></bean>
+	<bean id="goodsImageService" class="com.xt8.service.impl.GoodsImageServiceImpl"></bean>
+	<bean id="userLimitedForWantGoodsService" class="com.xt8.service.impl.UserLimitedForWantGoodsServiceImpl"></bean>
+	<bean id="expressCorpService" class="com.xt8.service.impl.ExpressCorpServiceImpl"></bean>
+	<bean id="deliveryLogService" class="com.xt8.service.impl.DeliveryLogServiceImpl"></bean>
+	<bean id="userAdviceService" class="com.xt8.service.impl.UserAdviceServiceImpl"></bean>
+	<bean id="userCommAddrService" class="com.xt8.service.impl.UserCommAddrServiceImpl"></bean>
+	<bean id="rechargeRecordService" class="com.xt8.service.impl.RechargeRecordServiceImpl"></bean>
+	<bean id="consumeRecordService" class="com.xt8.service.impl.ConsumeRecordServiceImpl"></bean>
+	<bean id="blackListService" class="com.xt8.service.impl.BlackListServiceImpl"></bean>
+	<bean id="moodAuthorizationService" class="com.xt8.service.impl.MoodAuthorizationServiceImpl"></bean>
+	<bean id="remarkFriendNameService" class="com.xt8.service.impl.RemarkFriendNameServiceImpl"></bean>
+	<bean id="verifyFriendService" class="com.xt8.service.impl.VerifyFriendServiceImpl"></bean>
+	<bean id="friendsService" class="com.xt8.service.impl.FriendsServiceImpl"></bean>
+
+	<!-- Struts Action配置 -->
+	<bean id="UserAction" class="com.xt8.action.UserAction" scope="prototype" />
+	<!-- <bean id="UserAction" class="com.xt8.action.UserAction" scope="prototype" 
+		/> <bean id="DirAction" class="com.xt8.action.DirAction" scope="prototype" 
+		/> <bean id="FileAction" class="com.xt8.action.FileAction" scope="prototype" 
+		/> <bean id="UploadAction" class="com.xt8.action.UploadAction" scope="prototype" 
+		/> -->
+	<!-- Jersey configuration -->
+	<bean id="reminderGenerateReceiver" class="com.xt8.timer.ReminderGenerateReceiver"
+		scope="prototype" />
+	<bean id="reminderCheckUserPayPostage" class="com.xt8.timer.ReminderCheckUserPayPostage"
+		scope="prototype" />
+	<bean id="userController" class="com.xt8.rest.UserController"
+		scope="prototype" />
+	<bean id="moodController" class="com.xt8.rest.MoodController"
+		scope="prototype" />
+	<bean id="goodsController" class="com.xt8.rest.GoodsController"
+		scope="prototype" />
+	<bean id="friendsController" class="com.xt8.rest.FriendsController"
+		scope="prototype" />
+	<bean id="dataController" class="com.xt8.rest.DataController"
+		scope="prototype" />
+
+
+</beans>

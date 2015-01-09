@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+	<class name="LoginLog" table="tb_login_log">
+		<cache usage="read-write" />
+
+		<id name="logId" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="device" type="java.lang.String">
+			<column name="device" length="32" />
+		</property>
+
+		<property name="loginIp" type="java.lang.String">
+			<column name="loginIp" length="16" />
+		</property>
+		
+		<property name="loginTime" type="java.util.Date">
+			<column name="loginTime" />
+		</property>
+		
+		<property name="result" type="java.lang.Integer">
+			<column name="result" not-null="true" />
+		</property>
+		<many-to-one name="user" class="User" column="userId"></many-to-one>
+		<many-to-one name="version" class="AppVersion" column="versionId"></many-to-one>
+		<many-to-one name="province" class="Province" column="province"></many-to-one>
+		<many-to-one name="city" class="City" column="city"></many-to-one>
+	</class>
+</hibernate-mapping>

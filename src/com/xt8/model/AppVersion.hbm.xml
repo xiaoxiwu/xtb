@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+	<class name="AppVersion" table="tb_appversion">
+		<cache usage="read-write" />
+
+		<id name="id" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="versionId" type="java.lang.Integer">
+			<column name="versionId" />
+		</property>
+		<property name="versionInfo" type="java.lang.String">
+			<column name="versionInfo" length="32" />
+		</property>
+        <property name="appType" type="java.lang.Integer">
+			<column name="appType" />
+		</property>
+		<property name="path" type="java.lang.String">
+			<column name="path"  length="512" />
+		</property>
+		
+		<property name="time" type="java.util.Date">
+			<column name="time" />
+		</property>
+
+		<property name="description" type="java.lang.String">
+			<column name="description"    length="512" />
+		</property>
+		<many-to-one name="admin" class="Admin" column="admin"></many-to-one>
+	</class>
+</hibernate-mapping>

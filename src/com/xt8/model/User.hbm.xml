@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+
+	<class name="User" table="tb_user">
+		<cache usage="read-write" />
+		<id name="userId" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="phoneNumber" type="java.lang.String">
+			<column name="phoneNumber" length="32" unique="true" />
+		</property>
+		<property name="heartbeatNumber" type="java.lang.String">
+			<column name="heartbeatNumber" length="32" unique="true" />
+		</property>
+		<property name="plainPassword" type="java.lang.String">
+			<column name="plainPassword" length="32" />
+		</property>
+		<property name="encryptedPassword" type="java.lang.String">
+			<column name="encryptedPassword" length="256" />
+		</property>
+		<property name="gender" type="java.lang.Integer">
+			<column name="gender" />
+		</property>
+		<property name="simpleCode" type="java.lang.String">
+			<column name="simpleCode" length="32" />
+		</property>
+		<property name="nickName" type="java.lang.String">
+			<column name="nickName" length="32" />
+		</property>
+		<property name="personalizedSignature" type="java.lang.String">
+			<column name="personalizedSignature" length="300" />
+		</property>
+		<property name="avatar" type="java.lang.String">
+			<column name="avatar"  length="256"/>
+		</property>
+		<property name="level" type="java.lang.Integer">
+			<column name="level" />
+		</property>
+		<property name="balance" type="java.lang.Double">
+			<column name="balance" />
+		</property>
+		<property name="registerDate" type="java.util.Date">
+			<column name="registerDate" />
+		</property>
+		<property name="apiKey" type="java.lang.String">
+			<column name="apiKey" length="256" />
+		</property>
+		<property name="state" type="java.lang.Integer">
+			<column name="state" />
+		</property>
+		<set name="moods">
+			<key column="userId" />
+			<one-to-many class="Mood" />
+		</set>
+		<set name="files">
+			<key column="userId" />
+			<one-to-many class="File"/>
+		</set>
+		<set name="images">
+			<key column="userId" />
+			<one-to-many class="Image" />
+		</set>
+	</class>
+</hibernate-mapping>

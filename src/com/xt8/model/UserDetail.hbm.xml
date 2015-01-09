@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+	<class name="UserDetail" table="tb_user_detail">
+		<cache usage="read-write" />
+
+		<id name="id" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="birthDay" type="java.util.Date">
+			<column name="birthDay" />
+		</property>
+		<property name="identityCard" type="java.lang.String">
+			<column name="identityCard" length="64" />
+		</property>
+		<property name="briefIntroduction" type="java.lang.String">
+			<column name="briefIntroduction" length="512" />
+		</property>
+		<property name="updateTime" type="java.util.Date">
+			<column name="updateTime" />
+		</property>
+		<property name="longtitude" type="java.lang.Double">
+			<column name="longtitude" />
+		</property>
+		<property name="latitude" type="java.lang.Double">
+			<column name="latitude" />
+		</property>
+		<property name="detailAddr" type="java.lang.String">
+			<column name="detailAddr" length="64" />
+		</property>
+		<property name="qq" type="java.lang.String">
+			<column name="qq" length="16" />
+		</property>
+		<property name="weChat" type="java.lang.String">
+			<column name="weChat" length="16" />
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="email" length="32" />
+		</property>
+		<property name="weibo" type="java.lang.String">
+			<column name="weibo" length="32" />
+		</property>
+				
+		<many-to-one name="user" class="User" column="userId"></many-to-one>
+		<many-to-one name="province" class="Province" column="province"></many-to-one>
+		<many-to-one name="city" class="City" column="city"></many-to-one>
+		<many-to-one name="district" class="District" column="district"></many-to-one>
+	
+	</class>
+</hibernate-mapping>

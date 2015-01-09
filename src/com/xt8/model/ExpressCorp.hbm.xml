@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+	<class name="ExpressCorp" table="tb_express_corp">
+		<cache usage="read-write" />
+
+		<id name="id" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		
+		<property name="ecId" type="java.lang.Integer">
+			<column name="ecId" />
+		</property>
+		<property name="ecName" type="java.lang.String">
+			<column name="ecName" length="32" />
+		</property>
+
+		<property name="contact" type="java.lang.String">
+			<column name="contact" length="64" />
+		</property>
+		<property name="contactPerson" type="java.lang.String">
+			<column name="contactPerson" length="32" />
+		</property>
+		<property name="time" type="java.util.Date">
+			<column name="time" />
+		</property>
+				<property name="description" type="java.lang.String">
+			<column name="description" length="32" />
+		</property>
+	</class>
+</hibernate-mapping>

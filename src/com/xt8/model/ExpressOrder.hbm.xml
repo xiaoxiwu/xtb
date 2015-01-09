@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+<!-- private Integer Id;		
+	private Integer WayBillNum;
+	private Date NotifyTime;
+	private Date ProcessingTime;
+	private Integer Status;
+	
+	private Order Order;
+	private ExpressSite ExpSite;
+	private Deliver Deliver; -->
+	<class name="ExpressOrder" table="tb_expressOrder">
+		<cache usage="read-write" />
+
+		<id name="Id" type="java.lang.Integer">
+			<generator class="native" />
+		</id>		
+		<property name="WayBillNum" type="java.lang.Integer">
+			<column name="WayBillNum"></column>
+		</property>
+		<property name="NotifyTime" type="java.util.Date">
+			<column name="NotifyTime" />
+		</property>
+		<property name="ProcessingTime" type="java.util.Date">
+			<column name="ProcessingTime" />
+		</property>
+		<property name="Status" type="java.lang.Integer">
+			<column name="Status" />
+		</property>
+		
+		<!-- 快递订单与快递点为一对一关系 -->
+		<many-to-one name="ExpSite"  column="ExpSiteId"  unique="true"></many-to-one>
+		<!-- 快递订单与快递员为一对一关系 -->
+		<many-to-one name="Deliver"  column="DeliverId"  unique="true"></many-to-one>
+		<!-- 快递订单与订单发货为一对一关系 -->
+		<many-to-one name="Order"  column="OrderId"  unique="true"></many-to-one>
+	
+	</class>
+</hibernate-mapping>

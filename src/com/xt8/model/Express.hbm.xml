@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+<!-- private int Id;
+	private String Name;
+	private String ContactPerson;
+	private String Tel;
+	private Set<ExpressSite> ExpSiteList; -->
+	<class name="Express" table="tb_express">
+		<cache usage="read-write" />
+		<id name="Id" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		
+		<property name="Name" type="java.lang.String">
+			<column name="Name" />
+		</property>
+		<property name="ContactPerson" type="java.lang.String">
+			<column name="ContactPerson" />
+		</property>
+		<property name="Tel" type="java.lang.String">
+			<column name="Tel" />
+		</property>		
+		<property name="Remark" type="java.lang.String">
+			<column name="Remark" />
+		</property>
+	  <set name="ExpSiteList">
+	      <key column="ExpressId"></key>
+	      <one-to-many class="com.xt8.model.ExpressSite"/>
+	  </set>
+	</class>
+</hibernate-mapping>

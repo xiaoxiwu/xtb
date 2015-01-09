@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+	<class name="OrderSendNotify" table="tb_order_send_notify">
+		<cache usage="read-write" />
+
+		<id name="id" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+
+		<property name="ifDeliver" type="java.lang.Integer">
+			<column name="ifDeliver" />
+		</property>
+
+		<property name="detailAddr" type="java.lang.String">
+			<column name="detailAddr" length="64" />
+		</property>
+		
+		<property name="recvPerson" type="java.lang.String">
+			<column name="recvPerson" length="32" />
+		</property>
+		
+		<property name="recvContact" type="java.lang.String">
+			<column name="recvContact" length="64" />
+		</property>
+		
+		<property name="postCode" type="java.lang.String">
+			<column name="postCode" length="32" />
+		</property>
+		
+		<property name="deliverTime" type="java.util.Date">
+			<column name="deliverTime" />
+		</property>
+		<property name="isLookup" type="java.lang.Integer">
+			<column name="isLookup" />
+		</property>
+		<property name="ifDel" type="java.lang.Integer">
+			<column name="ifDel" />
+		</property>
+		<many-to-one name="order" class="Order" column="orderId" lazy="false"></many-to-one>
+		<many-to-one name="sender" class="User" column="senderId" lazy="false"></many-to-one>
+		<many-to-one name="province" class="Province" column="province" lazy="false"></many-to-one>
+		<many-to-one name="city" class="City" column="city" lazy="false"></many-to-one>
+		<many-to-one name="district" class="District" column="district" lazy="false"></many-to-one>
+	</class>
+</hibernate-mapping>

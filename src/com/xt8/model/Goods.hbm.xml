@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+	<class name="Goods" table="tb_goods">
+		<cache usage="read-write" />
+
+		<id name="goodsId" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="name" length="128" />
+		</property>
+
+		<property name="detailAddr" type="java.lang.String">
+			<column name="detailAddr" length="32" />
+		</property>
+	    <property name="tag" type="java.lang.String">
+			<column name="tag" length="16" />
+		</property>
+		<property name="weight" type="java.lang.Integer">
+			<column name="weight" />
+		</property>
+		<property name="weightValue" type="java.lang.Double">
+			<column name="weightValue" />
+		</property>
+		<property name="sizeValue" type="java.lang.Double">
+			<column name="sizeValue" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="description" length="256" />
+		</property>
+		<property name="postageType" type="java.lang.Integer">
+			<column name="postageType" />
+		</property>
+		<property name="expireTime" type="java.util.Date">
+			<column name="expireTime" />
+		</property>
+		<property name="browseCount" type="java.lang.Integer">
+			<column name="browseCount" />
+		</property>
+		<property name="ifUndercarriage" type="java.lang.Integer">
+			<column name="ifUndercarriage" />
+		</property>
+		<property name="ifDel" type="java.lang.Integer">
+			<column name="ifDel" />
+		</property>
+		<many-to-one name="category" class="Category" column="category" lazy="false" ></many-to-one>
+		<many-to-one name="province" class="Province" column="province" lazy="false"></many-to-one>
+		<many-to-one name="city" class="City" column="city" lazy="false"></many-to-one>
+		<many-to-one name="district" class="District" column="district" lazy="false"></many-to-one>
+		<many-to-one name="owner" class="User" column="ownerId" lazy="false"></many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- private Integer Id;
+
+	private String SiteName;
+	private String SiteAddress;
+	private String SiteTel;
+	private String SiteCoverArea;
+	private String SiteHead;
+	private String HeadTel;
+	private Date RegisterTime;
+	private String Remark;
+	
+		private Image PassportImage;	
+		private int ExpressId;
+	private Set<Deliver> DeliverList;
+	private Set<ExpressOrder> ExpOrderList; -->
+<hibernate-mapping package="com.xt8.model">
+	<class name="ExpressSite"  table="tb_expressSite">
+		<cache usage="read-write" />
+		
+		<id name="Id" type="java.lang.Integer">
+			<generator class="native" />
+		</id>		
+		<property name="SiteName" type="java.lang.String">
+			<column name="SiteName" />
+		</property>
+		<property name="SiteAddress" type="java.lang.String">
+			<column name="SiteAddress" />
+		</property>
+		<property name="SiteTel" type="java.lang.String">
+			<column name="SiteTel"  />
+		</property>
+		<property name="SiteCoverArea" type="java.lang.String">
+			<column name="SiteCoverArea" />
+		</property>
+	    <property name="SiteHead" type="java.lang.String">
+			<column name="SiteHead"  />
+		</property>
+		<property name="HeadTel" type="java.lang.String">
+			<column name="HeadTel"  />
+		</property>
+		<property name="RegisterTime"  type="java.util.Date">
+			<column name="RegisterTime"  />
+		</property>
+		<property name="Remark"  type="java.lang.String">
+			<column name="Remark"  />
+		</property>
+		<many-to-one name="ExpressId"  class="com.xt8.model.Express"  column="ExpressId"></many-to-one>
+		<!-- 网点与网点营业执照图片为一对一关系 -->
+		<many-to-one name="PassportImage"  column="SitePassportImgId"  unique="true"></many-to-one>
+		<!-- 网点与快递员是一对多的关系 -->
+		<set name="DeliverList">
+			<key column="ExpSiteId"></key>
+			<one-to-many class="com.xt8.model.Deliver" ></one-to-many>
+		</set>
+		<!-- 一个网点可有多个快递订单 -->
+		<set name="ExpOrderList">
+		   <key column="ExpSiteId"></key>
+		   <one-to-many class="com.xt8.model.ExpressOrder" />
+		</set>		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+	<class name="District" table="tb_district">
+		<cache usage="read-write" />
+
+		<id name="distId" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="distName" type="java.lang.String">
+			<column name="distName" length="32" />
+		</property>
+
+		<many-to-one name="city" class="City" column="cId" lazy="false"></many-to-one>
+	</class>
+</hibernate-mapping>

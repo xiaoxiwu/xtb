@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.xt8.model">
+	<class name="Setting" table="tb_setting">
+		<cache usage="read-write" />
+
+		<id name="sId" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="sName" type="java.lang.String">
+			<column name="sName" length="32" />
+		</property>
+
+		<property name="ifDel" type="java.lang.Integer">
+			<column name="ifDel" />
+		</property>
+	</class>
+</hibernate-mapping>
