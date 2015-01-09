@@ -1,6 +1,7 @@
 package com.xt8.service.impl;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -58,4 +59,8 @@ public class BlackListServiceImpl extends BasicServiceImpl implements BlackListS
 		// TODO Auto-generated method stub
 		super.delete(blackList);
 	}
+
+	
+
+	
 }

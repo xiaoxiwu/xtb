@@ -3,10 +3,13 @@ package com.xt8.service.impl;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.xt8.model.Deliver;
 import com.xt8.model.ExpressCorp;
 import com.xt8.model.ExpressOrder;
 import com.xt8.model.ExpressSite;
@@ -33,11 +36,18 @@ public class ExpressSiteServiceImpl extends BasicServiceImpl implements
 		return findById(id);
 	}
 
-	@Override
-	public List<ExpressSite> listExpressSites() {
-		// TODO Auto-generated method stub
-		return find(ExpressSite.class, null);
-	}
-	
 
+	@Override
+	public List<Deliver> listDeliverById(int expSiteId) {
+		// TODO Auto-generated method stub
+		return find(Deliver.class, null);
+	}
+
+	@Override
+	public List<ExpressOrder> listExpressOrderById(int expSiteId) {
+		// TODO Auto-generated method stub
+		Map<String, Object> condition=new HashMap<String, Object>();
+		condition.put("ExpSiteId", expSiteId);
+		return find(Deliver.class, condition);
+	}
 }

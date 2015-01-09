@@ -23,7 +23,6 @@ public interface BasicService {
 	public void deleteByBatch(final Collection<Object> entities);
 
 	public Object findById(Class clazz, final Serializable id);
-
 	public List executeQuery(final String hql, final Object[] params);
 
 	public List executeQueryByPage(final String hql, final Object[] params,

@@ -45,6 +45,7 @@ public abstract class BasicServiceImpl implements BasicService {
 		return entity;
 	}
 
+	
 	@Override
 	public Serializable save(Object entity) {
 		Session session = sessionFactory.openSession();
