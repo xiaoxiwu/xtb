@@ -47,9 +47,9 @@
 		<property name="Remark"  type="java.lang.String">
 			<column name="Remark"  />
 		</property>
-		<many-to-one name="ExpressId"  class="com.xt8.model.Express"  column="ExpressId"></many-to-one>
+		<many-to-one name="Express"  class="com.xt8.model.Express"  column="ExpressId"  lazy="false"  fetch=" join"></many-to-one>
 		<!-- 网点与网点营业执照图片为一对一关系 -->
-		<many-to-one name="PassportImage"  column="SitePassportImgId"  unique="true"></many-to-one>
+		<many-to-one name="PassportImage"  column="PassportImgId"  unique="true"></many-to-one>
 		<!-- 网点与快递员是一对多的关系 -->
 		<set name="DeliverList">
 			<key column="ExpSiteId"></key>

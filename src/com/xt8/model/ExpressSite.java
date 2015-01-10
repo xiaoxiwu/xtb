@@ -27,7 +27,7 @@ RegisterTime
 Remark
 		 */
 	private Integer Id;
-	private int ExpressId;
+	private Express Express;
 	private String SiteName;
 	private String SiteAddress;
 	private Image PassportImage;	
@@ -130,10 +130,10 @@ Remark
 	public Set<ExpressOrder> getExpOrderList() {
 		return ExpOrderList;
 	}
-	public void setExpressId(int expressId) {
-		ExpressId = expressId;
+	public void setExpress(Express express) {
+		Express = express;
 	}
-	public int getExpressId() {
-		return ExpressId;
+	public Express getExpress() {
+		return Express;
 	}
 }

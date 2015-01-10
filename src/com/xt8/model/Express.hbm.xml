@@ -25,7 +25,7 @@
 		<property name="Remark" type="java.lang.String">
 			<column name="Remark" />
 		</property>
-	  <set name="ExpSiteList">
+	  <set name="ExpSiteList" lazy="false"  fetch="join">
 	      <key column="ExpressId"></key>
 	      <one-to-many class="com.xt8.model.ExpressSite"/>
 	  </set>
